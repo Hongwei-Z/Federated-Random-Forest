@@ -6,8 +6,7 @@ from typing import List
 
 
 def load_dataset(client_id: int):
-    # df = pd.read_csv('data.csv')
-    df = pd.read_csv('C:/Users/Hongwei/PycharmProjects/MCS/datasets/label_data.csv')
+    df = pd.read_csv('data.csv')
 
     X = df.iloc[:, :-1]
     y = df.iloc[:, -1]
