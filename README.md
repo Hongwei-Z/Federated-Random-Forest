@@ -26,14 +26,14 @@ This project implements a Federated Random Forest (FRF) using the federated lear
     Modify the global values so that it meets your requirements.
       ```python
       NUM_CLIENTS = 3
-      ROUNDS = 10
+      ROUNDS = 5
       ```
    3. **`client1.py, client2.py, client3.py`**:  
     Duplicate more client files if you need to, change the Client ID in the `main()`.
       ```python
       client_id = 1  # Client 1
       ```
-   4. (Optional) **`server.py, client2.py, client3.py`**:   
+   4. (Optional) **`server.py, client(1,2,3).py`**:   
     If the run process results in a server address error, try the default address. Modify `server_address` in the server file and the client files respectively.
       ```python
       server_address="0.0.0.0:8080"

@@ -4,10 +4,12 @@ from typing import Dict
 import warnings
 warnings.filterwarnings("ignore")
 
+# Define the global value for the number of clients and the training round
 NUM_CLIENTS = 3
 ROUNDS = 2
 
 
+# Return the current round
 def fit_config(server_round: int) -> Dict:
     config = {
         "server_round": server_round,
@@ -15,6 +17,7 @@ def fit_config(server_round: int) -> Dict:
     return config
 
 
+# Aggregate metrics and calculate weighted averages
 def metrics_aggregate(results) -> Dict:
     if not results:
         return {}
@@ -50,8 +53,9 @@ if __name__ == "__main__":
 
     print(f"Server:\n")
 
-    model = RandomForestClassifier()
+    model = RandomForestClassifier()  # Create the model
 
+    # Build a strategy
     strategy = fl.server.strategy.FedAvg(
         fraction_fit=1.0,
         fraction_evaluate=1.0,
@@ -63,8 +67,10 @@ if __name__ == "__main__":
         fit_metrics_aggregation_fn=metrics_aggregate,
     )
 
+    # Generate a text file for saving the server log
     fl.common.logger.configure(identifier="FL_Test", filename="log.txt")
 
+    # Start the server
     fl.server.start_server(
         config=fl.server.ServerConfig(num_rounds=ROUNDS),
         strategy=strategy,

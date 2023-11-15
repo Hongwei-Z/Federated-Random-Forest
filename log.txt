@@ -1,0 +1,21 @@
+FL_Test | INFO flwr 2023-11-15 17:12:13,743 | app.py:162 | Starting Flower server, config: ServerConfig(num_rounds=2, round_timeout=None)
+FL_Test | INFO flwr 2023-11-15 17:12:13,747 | app.py:175 | Flower ECE: gRPC server running (2 rounds), SSL is disabled
+FL_Test | INFO flwr 2023-11-15 17:12:13,751 | server.py:89 | Initializing global parameters
+FL_Test | INFO flwr 2023-11-15 17:12:13,751 | server.py:276 | Requesting initial parameters from one random client
+FL_Test | INFO flwr 2023-11-15 17:12:15,726 | server.py:280 | Received initial parameters from one random client
+FL_Test | INFO flwr 2023-11-15 17:12:15,726 | server.py:91 | Evaluating initial parameters
+FL_Test | INFO flwr 2023-11-15 17:12:15,727 | server.py:104 | FL starting
+FL_Test | DEBUG flwr 2023-11-15 17:12:57,485 | server.py:222 | fit_round 1: strategy sampled 3 clients (out of 3)
+FL_Test | DEBUG flwr 2023-11-15 17:13:41,206 | server.py:236 | fit_round 1 received 3 results and 0 failures
+FL_Test | DEBUG flwr 2023-11-15 17:13:41,207 | server.py:173 | evaluate_round 1: strategy sampled 3 clients (out of 3)
+FL_Test | DEBUG flwr 2023-11-15 17:13:42,582 | server.py:187 | evaluate_round 1 received 3 results and 0 failures
+FL_Test | DEBUG flwr 2023-11-15 17:13:42,583 | server.py:222 | fit_round 2: strategy sampled 3 clients (out of 3)
+FL_Test | DEBUG flwr 2023-11-15 17:14:19,707 | server.py:236 | fit_round 2 received 3 results and 0 failures
+FL_Test | DEBUG flwr 2023-11-15 17:14:19,707 | server.py:173 | evaluate_round 2: strategy sampled 3 clients (out of 3)
+FL_Test | DEBUG flwr 2023-11-15 17:14:21,018 | server.py:187 | evaluate_round 2 received 3 results and 0 failures
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | server.py:153 | FL finished in 125.29117430000042
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | app.py:225 | app_fit: losses_distributed [(1, 12.087429843842983), (2, 12.088773431877295)]
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | app.py:226 | app_fit: metrics_distributed_fit {'Accuracy': [(1, 0.0), (2, 0.0)], 'Precision': [(1, 0.0), (2, 0.0)], 'Recall': [(1, 0.0), (2, 0.0)], 'F1_Score': [(1, 0.0), (2, 0.0)]}
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | app.py:227 | app_fit: metrics_distributed {'Accuracy': [(1, 0.981584), (2, 0.981799)], 'Precision': [(1, 0.981504), (2, 0.981718)], 'Recall': [(1, 0.981584), (2, 0.981799)], 'F1_Score': [(1, 0.981388), (2, 0.981607)]}
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | app.py:228 | app_fit: losses_centralized []
+FL_Test | INFO flwr 2023-11-15 17:14:21,018 | app.py:229 | app_fit: metrics_centralized {}

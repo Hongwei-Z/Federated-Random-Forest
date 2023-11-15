@@ -6,11 +6,14 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
+# Create the flower client
 class FlowerClient(fl.client.NumPyClient):
 
+    # Get the current local model parameters
     def get_parameters(self, config):
         return helper.get_params(model)
 
+    # Train the local model, return the model parameters to the server
     def fit(self, parameters, config):
         print("Parameters before setting: ", parameters)
         helper.set_params(model, parameters)
@@ -24,6 +27,7 @@ class FlowerClient(fl.client.NumPyClient):
 
         return trained_params, len(X_train), {}
 
+    # Evaluate the local model, return the evaluation result to the server
     def evaluate(self, parameters, config):
         helper.set_params(model, parameters)
 
@@ -52,8 +56,10 @@ if __name__ == "__main__":
     client_id = 2
     print(f"Client {client_id}:\n")
 
+    # Get the dataset for local model
     X_train, y_train, X_test, y_test = helper.load_dataset(client_id - 1)
 
+    # Create and fit the local model
     model = RandomForestClassifier(
         n_estimators=100,
         class_weight='balanced',
@@ -63,4 +69,5 @@ if __name__ == "__main__":
     )
     model.fit(X_train, y_train)
 
+    # Start the client
     fl.client.start_numpy_client(server_address="127.0.0.1:8080", client=FlowerClient())

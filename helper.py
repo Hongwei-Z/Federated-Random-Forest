@@ -6,7 +6,8 @@ from typing import List
 
 
 def load_dataset(client_id: int):
-    df = pd.read_csv('data.csv')
+    # df = pd.read_csv('data.csv')
+    df = pd.read_csv('C:/Users/Hongwei/PycharmProjects/MCS/datasets/label_data.csv')
 
     X = df.iloc[:, :-1]
     y = df.iloc[:, -1]
@@ -51,6 +52,8 @@ def load_dataset(client_id: int):
     return X_train[client_id], y_train[client_id], X_test[client_id], y_test[client_id]
 
 
+# Look at the RandomForestClassifier documentation of sklearn and select the parameters
+# Get the parameters from the RandomForestClassifier
 def get_params(model: RandomForestClassifier) -> List[np.ndarray]:
     params = [
         model.n_estimators,
@@ -60,6 +63,7 @@ def get_params(model: RandomForestClassifier) -> List[np.ndarray]:
     return params
 
 
+# Set the parameters in the RandomForestClassifier
 def set_params(model: RandomForestClassifier, params: List[np.ndarray]) -> RandomForestClassifier:
     model.n_estimators = int(params[0])
     model.min_samples_split = int(params[1])
