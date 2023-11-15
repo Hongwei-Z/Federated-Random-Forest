@@ -1,4 +1,4 @@
-# Federated Random Forests
+# Federated Random Forest
 ## Using [Flower](https://flower.dev/docs/framework/index.html) federated learning with sklearn [Random Forest Classifier](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html) 
 This project implements a Federated Random Forest (FRF) using the federated learning library Flower and the sklearn random forest classifier. It is demonstrated through three clients as an example.
 
