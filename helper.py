@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
+from typing import List
 
 
 def load_dataset(client_id: int):
@@ -50,16 +51,17 @@ def load_dataset(client_id: int):
     return X_train[client_id], y_train[client_id], X_test[client_id], y_test[client_id]
 
 
-RFParams = []
-
-
-def get_model_params(model: RandomForestClassifier) -> RFParams:
+def get_params(model: RandomForestClassifier) -> List[np.ndarray]:
     params = [
         model.n_estimators,
+        model.min_samples_split,
+        model.min_samples_leaf,
     ]
     return params
 
 
-def set_model_params(model: RandomForestClassifier, params: RFParams) -> RandomForestClassifier:
+def set_params(model: RandomForestClassifier, params: List[np.ndarray]) -> RandomForestClassifier:
     model.n_estimators = int(params[0])
+    model.min_samples_split = int(params[1])
+    model.min_samples_leaf = int(params[2])
     return model

@@ -49,7 +49,7 @@ class FlowerClient(fl.client.NumPyClient):
 
 
 if __name__ == "__main__":
-    client_id = 1
+    client_id = 3
     print(f"Client {client_id}:\n")
 
     X_train, y_train, X_test, y_test = helper.load_dataset(client_id - 1)
