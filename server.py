@@ -1,8 +1,7 @@
 import flwr as fl
 from sklearn.ensemble import RandomForestClassifier
 from typing import Dict
-import warnings
-warnings.filterwarnings("ignore")
+
 
 # Define the global value for the number of clients and the training round
 NUM_CLIENTS = 3
@@ -68,7 +67,7 @@ if __name__ == "__main__":
     )
 
     # Generate a text file for saving the server log
-    fl.common.logger.configure(identifier="FL_Test", filename="log.txt")
+    # fl.common.logger.configure(identifier="FL_Test", filename="log.txt")
 
     # Start the server
     fl.server.start_server(

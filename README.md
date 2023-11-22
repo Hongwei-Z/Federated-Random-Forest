@@ -26,7 +26,7 @@ This project implements a Federated Random Forest (FRF) using the federated lear
     Modify the global values so that it meets your requirements.
       ```python
       NUM_CLIENTS = 3
-      ROUNDS = 5
+      ROUNDS = 2
       ```
    3. **`client1.py, client2.py, client3.py`**:  
     Duplicate more client files if you need to, change the Client ID in the `main()`.

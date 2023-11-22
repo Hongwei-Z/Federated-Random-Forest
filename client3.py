@@ -1,9 +1,10 @@
 import helper
+import numpy as np
 import flwr as fl
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import log_loss, accuracy_score, precision_score, recall_score, f1_score
 import warnings
-warnings.filterwarnings("ignore")
+warnings.simplefilter('ignore')
 
 
 # Create the flower client
@@ -11,6 +12,7 @@ class FlowerClient(fl.client.NumPyClient):
 
     # Get the current local model parameters
     def get_parameters(self, config):
+        print(f"Client {client_id} received the parameters.")
         return helper.get_params(model)
 
     # Train the local model, return the model parameters to the server
@@ -31,17 +33,15 @@ class FlowerClient(fl.client.NumPyClient):
     def evaluate(self, parameters, config):
         helper.set_params(model, parameters)
 
-        y_pred_proba = model.predict_proba(X_test)
-        loss = log_loss(y_test, y_pred_proba, labels=[0, 1])
-
         y_pred = model.predict(X_test)
+        loss = log_loss(y_test, y_pred, labels=[0, 1])
 
         accuracy = accuracy_score(y_test, y_pred)
         precision = precision_score(y_test, y_pred, average='weighted')
         recall = recall_score(y_test, y_pred, average='weighted')
         f1 = f1_score(y_test, y_pred, average='weighted')
 
-        line = "-" * 30
+        line = "-" * 21
         print(line)
         print(f"Accuracy : {accuracy:.8f}")
         print(f"Precision: {precision:.8f}")
@@ -59,11 +59,20 @@ if __name__ == "__main__":
     # Get the dataset for local model
     X_train, y_train, X_test, y_test = helper.load_dataset(client_id - 1)
 
+    # Print the label distribution
+    unique, counts = np.unique(y_train, return_counts=True)
+    train_counts = dict(zip(unique, counts))
+    print("Label distribution in the training set:", train_counts)
+    unique, counts = np.unique(y_test, return_counts=True)
+    test_counts = dict(zip(unique, counts))
+    print("Label distribution in the testing set:", test_counts)
+
     # Create and fit the local model
     model = RandomForestClassifier(
-        n_estimators=100,
         class_weight='balanced',
         criterion='entropy',
+        n_estimators=100,
+        max_depth=10,
         min_samples_split=2,
         min_samples_leaf=1,
     )
