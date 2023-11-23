@@ -65,14 +65,14 @@ if __name__ == "__main__":
     print("Label distribution in the training set:", train_counts)
     unique, counts = np.unique(y_test, return_counts=True)
     test_counts = dict(zip(unique, counts))
-    print("Label distribution in the testing set:", test_counts)
+    print("Label distribution in the testing set:", test_counts, '\n')
 
     # Create and fit the local model
     model = RandomForestClassifier(
         class_weight='balanced',
         criterion='entropy',
         n_estimators=100,
-        max_depth=10,
+        max_depth=40,
         min_samples_split=2,
         min_samples_leaf=1,
     )

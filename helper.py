@@ -65,8 +65,8 @@ def get_params(model: RandomForestClassifier) -> List[np.ndarray]:
 
 # Set the parameters in the RandomForestClassifier
 def set_params(model: RandomForestClassifier, params: List[np.ndarray]) -> RandomForestClassifier:
-    model.n_estimators = np.random.randint(100, 110)
-    model.max_depth = np.random.randint(10, 20)
-    model.min_samples_split = np.random.randint(2, 5)
-    model.min_samples_leaf = np.random.randint(1, 3)
+    model.n_estimators = int(params[0])
+    model.max_depth = int(params[1])
+    model.min_samples_split = int(params[2])
+    model.min_samples_leaf = int(params[3])
     return model

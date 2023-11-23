@@ -1,5 +1,4 @@
 import flwr as fl
-from sklearn.ensemble import RandomForestClassifier
 from typing import Dict
 
 
@@ -52,8 +51,6 @@ if __name__ == "__main__":
 
     print(f"Server:\n")
 
-    model = RandomForestClassifier()  # Create the model
-
     # Build a strategy
     strategy = fl.server.strategy.FedAvg(
         fraction_fit=1.0,
@@ -67,7 +64,7 @@ if __name__ == "__main__":
     )
 
     # Generate a text file for saving the server log
-    # fl.common.logger.configure(identifier="FL_Test", filename="log.txt")
+    fl.common.logger.configure(identifier="FL_Test", filename="log.txt")
 
     # Start the server
     fl.server.start_server(
